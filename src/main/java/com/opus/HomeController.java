@@ -1,5 +1,6 @@
 package com.opus;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,15 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HomeController {
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@RequestMapping(value = "/hr/employee", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-	public ResponseEntity getAllEmployeesJSON(Model model) 
+	public ResponseEntity getEmployeeJSONById(Model model) 
 	{
-		RestTemplate restTemplate = new RestTemplate();
 		String resourceUrl
-		  = "http://localhost:8005/employee";
-		ResponseEntity<String> response
-		  = restTemplate.getForEntity(resourceUrl + "/1", String.class);
+		  = "http://employeeConfigEurekaClient/employee";
+		ResponseEntity<String> response =  this.restTemplate.getForEntity(resourceUrl + "/1", String.class);
 		return new ResponseEntity(response, HttpStatus.OK);
 	}
 
