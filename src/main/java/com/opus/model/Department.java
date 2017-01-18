@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Employee implements Serializable {
+public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@JsonProperty("id")
@@ -30,7 +30,7 @@ public class Employee implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + "]";
+		return "Department [id=" + id + ", name=" + name + "]";
 	}
 
 	
