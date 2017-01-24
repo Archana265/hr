@@ -4,8 +4,16 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+  metrics:
+    export:
+      aggregate:
+        prefix: employeeConfigEurekaClient
       
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+      
+turbine:
+  clusterNameExpression: new String("default")
+  appConfig: employeeConfigEurekaClient,hrConfigEurekaClient
